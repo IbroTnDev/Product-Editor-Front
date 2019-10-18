@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+
+  }
+  
+  h1 {
+    color: #563d7d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+  }
+  
+  .nav {
+    height: 130px;
+  }
+
+  .top-name {
+    margin-top: -70px;
+    margin-left: 15px;
+    margin-bottom: 40px;
+  }
+
+  .top-name h4 {
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80px;
+    font-weight: 600;
+  }
+
+  .top-name h3 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+  }
+
+  .navbar-nav {
+    float: none;
+    margin: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white!important;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+  background-color: #ce0065;
+  color: white;
+}
+
+.add-btn {
+  float: right;
+  padding: 15px;
+}
+
+.container-fluid {
+  background-color: #8B008B;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+.top-desc {
+  margin-bottom: 30px;
+}
