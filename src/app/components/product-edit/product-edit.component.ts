@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from '../../shared/data_services/data.service';
 import {IProduct, IDescription} from '../../shared/interfaces';
@@ -11,20 +11,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductEditComponent implements OnInit {
 
+  @ViewChild('d1', {static: false}) d1: ElementRef;
   form: FormGroup;
-  id: number;
-  name: string;
-  category: string;
-  code: number;
-  price: number;
-  key: string;
-  value: string;
   idDetail: number;
   objectKeys = Object.keys;
   details: [];
-
   product: IProduct;
   productEdited = false;
+  detailHtml: any = `<div class="col-md-5">
+                    <label class="control-label">key: </label>
+                    <input type="text" class="form-control" formControlName="key" placeholder="Detail Key">
+                  </div>
+                  <div class="col-md-4" style="margin-left: 55px;">
+                    <label class="control-label" >value: </label>
+                    <input type="text" class="form-control" formControlName="value" placeholder="Detail Value">
+                  </div>`;
 
   constructor(private dataService: DataService,
               private location: Location,
@@ -48,10 +49,10 @@ export class ProductEditComponent implements OnInit {
 
     this.dataService.getProduct(this.id).subscribe((product: IProduct) => {
         console.log('Prodcut loaded with success. ', product);
-        this.name = product[0].product.name;
-        this.category = product[0].product.category;
-        this.code = product[0].product.code;
-        this.price = product[0].product.price;
+        this.form.get('name').setValue(product[0].product.name);
+        this.form.get('category').setValue(product[0].product.category);
+        this.form.get('code').setValue(product[0].product.code);
+        this.form.get('price').setValue(product[0].product.price);
         this.details = product[0].details;
     },
     error => {
@@ -88,10 +89,11 @@ export class ProductEditComponent implements OnInit {
       (error) => console.log(error)
       );
 
-    // this.goBack();
+    this.goBack();
     }
 
-    add_details() {
+    addDetails() {
+      this.d1.nativeElement.innerHTML = this.detailHtml;
     }
 
      goBack(): void {

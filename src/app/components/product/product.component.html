@@ -17,19 +17,19 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let key of objectKeys(products) | sortBy">
-      <td>{{products[key].product.code}}</td>
-      <td>{{products[key].product.category}}</td>
-      <td>{{products[key].product.name}}</td>
-      <td>{{products[key].product.price}}</td>
+    <tr *ngFor="let key of objectKeys(products)">
+      <td>{{products[key].code}}</td>
+      <td>{{products[key].category}}</td>
+      <td>{{products[key].name}}</td>
+      <td>{{products[key].price}}</td>
       <td>    
-        <a [routerLink]="['/product-edit',products[key].product.id]" class="btn btn-primary a-btn-slide-text">
+        <a [routerLink]="['/product-edit',products[key].id]" class="btn btn-primary a-btn-slide-text">
           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
           <span><strong>Edit</strong></span>            
         </a>
       </td>
       <td>    
-        <a (click)="removeProduct(products[key].product); $event.stopPropagation()" class="btn btn-danger a-btn-slide-text">
+        <a (click)="removeProduct(products[key]); $event.stopPropagation()" class="btn btn-danger a-btn-slide-text">
           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
            <span><strong>Delete</strong></span>            
         </a>

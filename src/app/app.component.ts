@@ -15,8 +15,15 @@ export class AppComponent {
   dataProd: string;
   nameToken: string;
   selectedProdId: any[] = [];
+  form: FormGroup;
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router, public fb: FormBuilder) {
+    this.form = this.fb.group(
+      {
+        nameToken: ['']
+    }
+  );
+}
 
   typeaheadOnSelect(e: TypeaheadMatch): void {
       this.dataProd = e.item;

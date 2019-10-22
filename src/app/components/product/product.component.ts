@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getProducts()
+    this.dataService.productsList()
     .subscribe(response => {
       this.products = response;
       console.log('succeed to load Products.', this.products);
@@ -35,7 +35,7 @@ export class ProductComponent implements OnInit {
         .subscribe(() => {
             console.log('Product was deleted successfully. ');
             // Reload Products after one is deleted
-            this.dataService.getProducts()
+            this.dataService.productsList()
             .subscribe(response => {
               this.products = response;
               console.log('succeed to load Products.', this.products);

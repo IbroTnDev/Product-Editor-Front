@@ -6,13 +6,12 @@
             <li><a [routerLink]="['/']">List</a></li>
             <li><a [routerLink]="['/product-new']">Create</a></li>
             <li style="float: right">
-                <form class="navbar-form navbar-left">
+                <form [formGroup]="form" class="navbar-form navbar-left">
                     <div class="input-group">
                          <input type="text"
                          class="form-control"
                          placeholder="Search" 
-                         [(ngModel)] ="nameToken"
-                         name="nameToken"
+                         formControlName="nameToken"
                          [typeahead]="productsData"
                          (typeaheadOnSelect)="typeaheadOnSelect($event)"
                          [typeaheadOptionsLimit]="10"

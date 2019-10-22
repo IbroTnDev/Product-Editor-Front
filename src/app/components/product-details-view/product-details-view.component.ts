@@ -10,14 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsViewComponent implements OnInit {
 
-  form: FormGroup;
   id: number;
-  name: string;
-  category: string;
-  code: number;
-  price: number;
-  key: string;
-  value: string;
+  form: FormGroup;
   idDetail: number;
   objectKeys = Object.keys;
   details: [];
@@ -46,10 +40,10 @@ export class ProductDetailsViewComponent implements OnInit {
 
     this.dataService.getProduct(this.id).subscribe((product: IProduct) => {
         console.log('Prodcut loaded with success. ', product);
-        this.name = product[0].product.name;
-        this.category = product[0].product.category;
-        this.code = product[0].product.code;
-        this.price = product[0].product.price;
+        this.form.get('name').setValue(product[0].product.name);
+        this.form.get('category').setValue(product[0].product.category);
+        this.form.get('code').setValue(product[0].product.code);
+        this.form.get('price').setValue(product[0].product.price);
         this.details = product[0].details;
     },
     error => {

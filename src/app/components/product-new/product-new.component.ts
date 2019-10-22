@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from '../../shared/data_services/data.service';
 import {IProduct, IDescription} from '../../shared/interfaces';
@@ -11,6 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ProductNewComponent implements OnInit {
 
+  @ViewChild('d1', {static: false}) d1: ElementRef;
   products: IProduct[];
   productCreated: false;
   description: IDescription[];
@@ -18,16 +19,16 @@ export class ProductNewComponent implements OnInit {
   dta: IProduct;
   idProd: number;
   idDesc: number;
-  detailHtml: any = `<div class="col-md-4">
-  <label class="control-label">key: </label>
-  <input type="text" class="form-control" formControlName="key" placeholder="Detail Key">
-  </div>
-  <div class="col-md-4" style="margin-left: 30px;">
-  <label class="control-label" >value: </label>
-  <input type="text" class="form-control" formControlName="value" placeholder="Detail Value"></div>`;
+  detailHtml: any = `<div class="col-md-5">
+                      <label class="control-label">key: </label>
+                      <input type="text" class="form-control" formControlName="key" placeholder="Detail Key">
+                    </div>
+                    <div class="col-md-4" style="margin-left: 55px;">
+                      <label class="control-label" >value: </label>
+                      <input type="text" class="form-control" formControlName="value" placeholder="Detail Value">
+                    </div>`;
 
-  constructor(private sanitizer: DomSanitizer,
-              private dataService: DataService,
+  constructor(private dataService: DataService,
               private location: Location,
               public fb: FormBuilder) {
                 this.form = this.fb.group(
@@ -81,12 +82,12 @@ export class ProductNewComponent implements OnInit {
     (response) => console.log(response),
     (error) => console.log(error)
   );
-  // this.goBack();
+  this.goBack();
 }
 
 
- add_details() {
-  return this.sanitizer.bypassSecurityTrustHtml(this.detailHtml);
+addDetails() {
+  this.d1.nativeElement.innerHTML = this.detailHtml;
 }
 
  goBack(): void {
