@@ -21,8 +21,9 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.dataService.productsList()
     .subscribe(response => {
+      console.log(response);
       this.products = response;
-      console.log('succeed to load Products.', this.products);
+      // console.log('succeed to load Products.', this.products);
   },
   error => {
        console.log('Failed to load Products.' + error);

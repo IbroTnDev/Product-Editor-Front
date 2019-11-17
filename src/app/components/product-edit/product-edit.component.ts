@@ -17,6 +17,7 @@ export class ProductEditComponent implements OnInit {
   objectKeys = Object.keys;
   details: [];
   product: IProduct;
+  id: number;
   productEdited = false;
   detailHtml: any = `<div class="col-md-5">
                     <label class="control-label">key: </label>
