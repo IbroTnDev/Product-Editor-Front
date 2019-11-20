@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from '../../shared/data_services/data.service';
 import {IProduct, IDescription} from '../../shared/interfaces';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -25,7 +25,7 @@ export class ProductNewComponent implements OnInit {
                     </div>
                     <div class="col-md-4" style="margin-left: 55px;">
                       <label class="control-label" >value: </label>
-                      <input type="text" class="form-control" formControlName="value" placeholder="Detail Value">
+                      <input type=  "text" class="form-control" formControlName="value" placeholder="Detail Value">
                     </div>`;
 
   constructor(private dataService: DataService,
@@ -33,14 +33,14 @@ export class ProductNewComponent implements OnInit {
               public fb: FormBuilder) {
                 this.form = this.fb.group(
                   {
-                  name: [''],
+                  name: ['', Validators.required],
                   category: [''],
                   code: [],
                   price: [],
                   key: [''],
                   value: ['']
-                }
-              );
+                 // topics: fb.array([])   // topics: new formArray([])
+                });
               }
 
   ngOnInit() {

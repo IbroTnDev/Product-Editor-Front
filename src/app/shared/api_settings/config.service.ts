@@ -7,6 +7,7 @@ export class ConfigService {
 
     constructor() {
         this.apiURI = 'http://localhost:9000/';
+//        this.apiURI = 'https://jsonplaceholder.typicode.com/posts';
      }
 
      getApiURI() {
