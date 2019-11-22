@@ -79,7 +79,7 @@ export class ProductNewComponent implements OnInit {
   console.log(data);
   this.dataService.createProduct(data)
   .subscribe(
-    (response) => console.log(response),
+    (newProd) => console.log(newProd),
     (error) => console.log(error)
   );
   this.goBack();

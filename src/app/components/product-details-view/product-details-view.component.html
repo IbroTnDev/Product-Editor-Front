@@ -5,46 +5,46 @@
     <section class="panel panel-default">
         <div class="panel-body">
             
-        <form [formGroup]="form" class="form-horizontal" role="form">
-        
-            <div class="form-group">
-            <label class="col-sm-3 control-label">Name</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control" formControlName="name" placeholder="Product Name" disabled>
-            </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Category</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" formControlName="category" placeholder="Product Category" disabled> 
+            <form [formGroup]="form" class="form-horizontal" role="form">
+                
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" formControlName="name" placeholder="Product Name" disabled>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-group">
-            <label class="col-md-3 control-label">Code</label>
-            <div class="col-md-4"> 
-                <input type="number" class="form-control" formControlName="code" placeholder="Product Code" disabled>
-            </div>
-            <label class="col-md-1 control-label">Price</label>
-            <div class="col-md-4"> 
-                <input type="number" class="form-control" formControlName="price" placeholder="Product Price" disabled>
-            </div>
-            </div>
-            <label class="control-label" style="margin-left: 160px;">Product details</label>
-            <div *ngFor="let key of objectKeys(details)" class="form-group">
+                
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Category</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" formControlName="category" placeholder="Product Category" disabled> 
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Code</label>
+                    <div class="col-md-4"> 
+                        <input type="number" class="form-control" formControlName="code" placeholder="Product Code" disabled>
+                    </div>
+                    <label class="col-md-1 control-label">Price</label>
+                    <div class="col-md-4"> 
+                        <input type="number" class="form-control" formControlName="price" placeholder="Product Price" disabled>
+                    </div>
+                </div>
+                <label class="control-label" style="margin-left: 160px;">Product details</label>
+                <div *ngFor="let key of objectKeys(details)" class="form-group">
                     <input type="hidden" formControlName="idDetail" value="{{details[key].id}}">
-                <label class="col-md-3 control-label"></label>
-                <div class="col-md-4">
-                    <label class="control-label">key: </label>
-                    <input type="text" class="form-control" formControlName="key" placeholder="Detail Key" value="{{details[key].key}}" disabled>
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-4">
+                        <label class="control-label">key: </label>
+                        <input type="text" class="form-control" formControlName="key" placeholder="Detail Key" value="{{details[key].key}}" disabled>
+                    </div>
+                    <div class="col-md-4" style="margin-left: 30px;">
+                        <label class="control-label" >value: </label>
+                        <input type="text" class="form-control" formControlName="value" placeholder="Detail Value" value="{{details[key].value}}" disabled>
+                    </div>
                 </div>
-                <div class="col-md-4" style="margin-left: 30px;">
-                    <label class="control-label" >value: </label>
-                    <input type="text" class="form-control" formControlName="value" placeholder="Detail Value" value="{{details[key].value}}" disabled>
-                </div>
-            </div>
-        </form>
+            </form>
             
         </div>
     </section>

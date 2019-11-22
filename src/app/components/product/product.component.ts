@@ -20,9 +20,9 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.productsList()
-    .subscribe(response => {
-      console.log(response);
-      this.products = response;
+    .subscribe(products => {
+      console.log(products);
+      this.products = products;
       // console.log('succeed to load Products.', this.products);
   },
   error => {
@@ -37,8 +37,8 @@ export class ProductComponent implements OnInit {
             console.log('Product was deleted successfully. ');
             // Reload Products after one is deleted
             this.dataService.productsList()
-            .subscribe(response => {
-              this.products = response;
+            .subscribe(products => {
+              this.products = products;
               console.log('succeed to load Products.', this.products);
           },
           error => {

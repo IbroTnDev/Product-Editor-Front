@@ -41,9 +41,9 @@ export class AppComponent {
   getProducts(token: string) {
     const products = [];
     this.dataService.retrieveProducts(token).subscribe(
-      response => {
-        console.log(response);
-        const data = Object.values(response);
+      prod => {
+        console.log(prod);
+        const data = Object.values(prod);
         for (const u of data) {
           let product = u;
           product = [product[0], product[1]];

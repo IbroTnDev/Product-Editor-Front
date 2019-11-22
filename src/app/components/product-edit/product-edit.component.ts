@@ -57,7 +57,7 @@ export class ProductEditComponent implements OnInit {
         this.details = product[0].details;
     },
     error => {
-        console.log('Failed while trying to load the Prodcut. '+error);
+        console.log('Failed while trying to load the Prodcut. ' + error);
     });
   }
 

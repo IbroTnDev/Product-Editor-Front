@@ -20,44 +20,61 @@ export class DataService {
 
     // get all Products
 getProducts(): Observable<IProduct[]> {
-    return this.httpClient.get<IProduct[]>(this.baseUrl + 'products', this.options).pipe(
+    return this.httpClient.get<IProduct[]>(this.baseUrl + 'products', this.options)
+    .pipe(
         retry(3),
+        map(response => response),
         catchError(this.handleError));
 }
 
 productsList(): Observable<IProduct[]> {
-    return this.httpClient.get<IProduct[]>(this.baseUrl + 'productsList', this.options).pipe(
+    return this.httpClient.get<IProduct[]>(this.baseUrl + 'productsList', this.options)
+    .pipe(
         retry(3),
+        map(response => response),
         catchError(this.handleError));
 }
 
 // get a specific product by Id
 getProduct(id: number): Observable<IProduct> {
-    return this.httpClient.get<IProduct>(this.baseUrl + 'products/' + id ).pipe(
+    return this.httpClient.get<IProduct>(this.baseUrl + 'products/' + id )
+    .pipe(
         retry(3),
+        map(response => response),
         catchError(this.handleError));
 }
 
 // create a new product
 createProduct(product: any) {
-    return this.httpClient.post<any>(this.baseUrl + 'products', product);
+    return this.httpClient.post<any>(this.baseUrl + 'products', product)
+    .pipe(
+        map(response => response),
+        catchError(this.handleError));
 }
 
 // updates a product
 updateProduct(product: any) {
-    return this.httpClient.put(this.baseUrl + 'products/' + product.id, product);
+    return this.httpClient.put(this.baseUrl + 'products/' + product.id, product)
+    .pipe(
+        map(response => response),
+        catchError(this.handleError));
 }
 
 // delete product
 deleteProduct(id: number): Observable<{}> {
     return this.httpClient.delete(this.baseUrl + 'products/' + id, {headers: this.headers})
     .pipe(
+        map(response => response),
         catchError(this.handleError));
 }
 
 // get products for typeahead token
 retrieveProducts(term: string): Observable<IProduct> {
-    return this.httpClient.get<IProduct>(this.baseUrl + 'products/search/' + term ).pipe();
+    return this.httpClient.get<IProduct>(this.baseUrl + 'products/search/' + term )
+    .pipe(
+        retry(3),
+        map(response => response),
+        catchError(this.handleError));
 }
 
 private handleError(error: Error | HttpErrorResponse): Observable<never> {
