@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ProductComponent implements OnInit {
 
   products: IProduct[];
+  filteredProducts: IProduct[];
   objectKeys = Object.keys;
   selectedProduct: IProduct;
   productsTpe: any[] = [];
@@ -22,12 +23,19 @@ export class ProductComponent implements OnInit {
     this.dataService.productsList()
     .subscribe(products => {
       console.log(products);
-      this.products = products;
+      this.filteredProducts = this.products = products;
       // console.log('succeed to load Products.', this.products);
   },
   error => {
        console.log('Failed to load Products.' + error);
   });
+  }
+
+  filter(query: string) {
+    this.filteredProducts = (query) ?
+      this.products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) :
+      this.products;
+
   }
 
   removeProduct(product: IProduct): void {

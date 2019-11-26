@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../shared/data_services/data.service';
 import {IProduct, IDescription} from '../../shared/interfaces';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -47,7 +47,7 @@ export class ProductDetailsViewComponent implements OnInit {
         this.details = product[0].details;
     },
     error => {
-        console.log('Failed while trying to load the Prodcut. '+error);
+        console.log('Failed while trying to load the Prodcut. ' + error);
     });
   }
 

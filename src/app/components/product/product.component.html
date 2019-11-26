@@ -4,6 +4,12 @@
   </div>
   <section class="panel panel-default">
     <div class="panel-body">
+      <p>
+        <input
+          #query
+          (keyup)="filter(query.value)"
+          type="text" class="form-control" placeholder="Search...">
+      </p>
       <table class="table table-striped" style="font-size: 20px;">
         <thead>
           <tr>
@@ -17,7 +23,7 @@
         </thead>
         
         <tbody>
-          <tr *ngFor="let product of products">
+          <tr *ngFor="let product of filteredProducts">
             <td>{{product.code}}</td>
             <td>{{product.category}}</td>
             <td>{{product.name}}</td>

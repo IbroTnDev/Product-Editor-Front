@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { DataService } from './shared/data_services/data.service';
-import {IProduct, IDescription} from './shared/interfaces';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TypeaheadMatch } from 'ngx-bootstrap';
 import {Router} from '@angular/router';
+import { DataService } from './shared/data_services/data.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +20,7 @@ export class AppComponent {
     this.form = this.fb.group(
       {
         nameToken: ['']
-    }
+      }
   );
 }
 
